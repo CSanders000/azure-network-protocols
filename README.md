@@ -5,11 +5,6 @@
 <h1>Network Security Groups (NSGs) and Inspecting Traffic Between Azure Virtual Machines</h1>
 In this tutorial, we observe various network traffic to and from Azure Virtual Machines with Wireshark as well as experiment with Network Security Groups. <br />
 
-
-<h2>Video Demonstration</h2>
-
-- ### [YouTube: Azure Virtual Machines, Wireshark, and Network Security Groups](https://www.youtube.com)
-
 <h2>Environments and Technologies Used</h2>
 
 - Microsoft Azure (Virtual Machines/Compute)
@@ -25,10 +20,17 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 
 <h2>High-Level Steps</h2>
 
-- Step 1
-- Step 2
-- Step 3
-- Step 4
+- Set up our resources in Azure
+- Observe ICMP Traffic
+- Observe SSH Traffic
+- Observe DHCP Traffic
+- Observe DNS Traffic
+- Observe RDP Traffic
+
+ <h2>Prerequisites </h2>
+
+- Create a virtual machine on Azure running Windows 10 OS (VM1)
+- Create a virtual machine running on Linux (Ubuntu). Make sure they are connected to the same virtual network. (VM2)
 
 <h2>Actions and Observations</h2>
 
@@ -36,7 +38,7 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 <img src=https://github.com/CSanders000/azure-network-protocols/assets/161166823/f26dd965-2bd8-4d6a-92b9-73b067d5e4ae"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+When we connect into VM1, the first thing we will do is go to Edge to download and install Wireshark. Once it's running, it will ask where it will capture from. We'll click ethernet and click the blue icon under file on the top left. This will take us to the screen pictured above where we are getting a spam of all the background traffic occuring on our network. 
 </p>
 <br />
 
@@ -44,7 +46,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <img src=https://github.com/CSanders000/azure-network-protocols/assets/161166823/6e608195-55a4-4169-ae10-5069e522e844"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+We can start by observing ICMP traffic (Internet Control Messaging Protocol), which we'll do by typing "ICMP" into the search bar
 </p>
 <br />
 
