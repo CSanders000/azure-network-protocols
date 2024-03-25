@@ -38,7 +38,7 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 <img src=https://github.com/CSanders000/azure-network-protocols/assets/161166823/f26dd965-2bd8-4d6a-92b9-73b067d5e4ae"/>
 </p>
 <p>
-When we connect into VM1, the first thing we will do is go to Edge to download and install Wireshark. Once it's running, it will ask where it will capture from. We'll click ethernet and click the blue icon under file on the top left. This will take us to the screen pictured above where we are getting a spam of all the background traffic occuring on our network. 
+When we connect to VM1, the first thing we will do is go to Edge to download and install Wireshark. Once Wireshark is installed and running, it will ask where it will capture from. We'll click ethernet and click the blue icon on the top left. This will take us to the screen pictured above where we are getting a spam of all the background traffic occurring on our network. 
 </p>
 <br />
 
@@ -46,7 +46,7 @@ When we connect into VM1, the first thing we will do is go to Edge to download a
 <img src=https://github.com/CSanders000/azure-network-protocols/assets/161166823/6e608195-55a4-4169-ae10-5069e522e844"/>
 </p>
 <p>
-We can start by observing ICMP traffic (Internet Control Messaging Protocol), which we'll do by typing "ICMP" into the search bar. At first we wont see any traffic, but when we open the command prompt ping VM2's private IP address we will see the communication between the servers. We'll see the source of the ICMP packet, it's destination, as well as other information. We can also ping a website such as www.google.com and see that we send the packet out, and then the computer at the destination will send a reply.
+We can start by observing ICMP traffic (Internet Control Messaging Protocol), which we'll do by typing "ICMP" into the search bar. At first, we won't see any traffic, but when we open the command prompt and ping VM2's private IP address we will see the communication between the servers. We'll see the source of the ICMP packet, its destination, as well as other information. We can also ping a website such as www.google.com and see that we send the packet out, and then the computer at the destination will send a reply.
 </p>
 <br />
 
@@ -70,7 +70,7 @@ Now we will disable the incoming pings from VM1 on VM2 using the network securit
 <img src=https://github.com/CSanders000/azure-network-protocols/assets/161166823/c179f8b9-8d9d-482c-a422-c68cf7d53565"/>
 </p>
 <p>
-Now we can go back into our VM1 connection and oberve that in Wireshark we are only seeing echo requests to VM2, and in the command prompt we will start to see "Request timed out". This confirms that ICMP messages are now being denied by VM2's firewall.
+Now we can go back into our VM1 connection and observe that in Wireshark we are only seeing echo requests to VM2, and in the command prompt we will start to see "Request timed out". This confirms that ICMP messages are now being denied by VM2's firewall.
 </p>
 <br />
 
@@ -78,7 +78,7 @@ Now we can go back into our VM1 connection and oberve that in Wireshark we are o
 <img src=https://github.com/CSanders000/azure-network-protocols/assets/161166823/07287040-0b8c-4fdf-800b-9f811a043fe4"/>
 </p>
 <p>
-To undo this we can simply go minimize our connection and edit the rule we made. So we'll simply change the action back to allow, or we can delete the rule entirely.
+To undo this we can simply minimize our connection and open Network Security Groups in Azure to edit the rule we made. So we'll simply change the action back to allow, or we can delete the rule entirely.
 </p>
 <br />
 
@@ -86,7 +86,7 @@ To undo this we can simply go minimize our connection and edit the rule we made.
 <img src=https://github.com/CSanders000/azure-network-protocols/assets/161166823/ca1430ef-251e-4429-bc73-00f9b2caf9b9"/>
 </p>
 <p>
-Once we save the changed to the rule we can go back to our VM1 connection and observe that the normal request and reply activity in Wireshark has resumed and the command prompt will show we're receiving a reply from VM2. We can then press "Ctrl + C" to stop the ping. 
+Once we save the change to the rule we can go back to our VM1 connection and observe that the normal request and reply activity in Wireshark has resumed and the command prompt will show we're receiving a reply from VM2. We can then press "Ctrl + C" to stop the ping. 
 </p>
 <br />
 
@@ -94,7 +94,7 @@ Once we save the changed to the rule we can go back to our VM1 connection and ob
 <img src=https://github.com/CSanders000/azure-network-protocols/assets/161166823/a2b39916-1efd-4cc0-a4a1-8338fc7f22da"/>
 </p>
 <p>
-Next we will observe Secure Shell activity. To start we will type ssh into our search bar, and observe there is no traffic. In the command prompt to "secure shell" into VM2 we will type "ssh (username for VM2)@(VM2's private IP address)" and hit enter. This will initiate the protocol and we will see traffic between our virtual networks. It will ask us if we want to continue which we will say yes. We will then type in the password for VM2. Once connected, everything we type into ssh will show traffic because VM1 is communicating with VM2 to tell it what letters we're typingt. If we type any commands we will see an increased amount of traffic. After observing, we can exit Secure Shell by typing "exit" and pressing enter.
+Next, we will observe Secure Shell activity. To start we will type ssh into our search bar, and observe there is no traffic. In the command prompt to "secure shell" into VM2, we will type "ssh (username for VM2)@(VM2's private IP address)" and hit enter. This will initiate the protocol and we will see traffic between our virtual networks. It will ask us if we want to continue and we will say yes. We will then type in the password for VM2. Once connected, everything we type into SSH will show traffic because VM1 is communicating with VM2 to tell it what letters we're typing. If we type any commands we will see an increased amount of traffic. After observing, we can exit Secure Shell by typing "exit" and pressing enter.
 </p>
 <br />
 
@@ -102,7 +102,7 @@ Next we will observe Secure Shell activity. To start we will type ssh into our s
 <img src=https://github.com/CSanders000/azure-network-protocols/assets/161166823/45137a9e-fe72-4945-a4b0-b66b98c03127"/>
 </p>
 <p>
-To observe DHCP (Dynamic Host Configuration Protocol) traffic, we will type "DHCP" into our searchbar on wireshark and hit enter. From here, we will go into our command prompt and type "ipconfig /renew". This will ask the DHCP server to renew our lease on our IP address, and as such we will see traffic between our computer and the server.
+To observe DHCP (Dynamic Host Configuration Protocol) traffic, we will type "DHCP" into our search bar on wireshark and hit enter. From here, we will go into our command prompt and type "ipconfig /renew". This will ask the DHCP server to renew our lease on our IP address, and as such we will see traffic between our computer and the server.
 </p>
 <br />
 
@@ -110,7 +110,7 @@ To observe DHCP (Dynamic Host Configuration Protocol) traffic, we will type "DHC
 <img src=https://github.com/CSanders000/azure-network-protocols/assets/161166823/55f4b266-a1f9-4553-bf58-e4aef2ebbca9"/>
 </p>
 <p>
-Next we will be observing DNS (Domain Name Service) traffic. So we can type either "DNS" or "udp.port==53" into the search bar. Then on the command prompt, we can simply search for the ip address of a website by using the nslookup command. So we'll search the IP addresses of a few websites of our choosing by typing "nslookup (website name) and pressing enter. When we do this we will see traffic between our virtual machine and the DNS server asking what the IP addresses are of these websites. 
+Next, we will be observing DNS (Domain Name Service) traffic. So we can type either "DNS" or "udp.port==53" into the search bar. Then on the command prompt, we can simply search for the IP address of a website by using the nslookup command. So we'll search the IP addresses of a few websites of our choosing by typing "nslookup (website name) and pressing enter. When we do this we will see traffic between our virtual machine and the DNS server asking what the IP addresses are of these websites. 
 </p>
 <br />
 
@@ -118,6 +118,6 @@ Next we will be observing DNS (Domain Name Service) traffic. So we can type eith
 <img src=https://github.com/CSanders000/azure-network-protocols/assets/161166823/c60933f1-53b7-4f40-95d0-e6139035e300"/>
 </p>
 <p>
-Finally, we will observe RDP (Remote Desktop Protocol) by typing "RDP" or "tcp.port==3389" into our searchbar. When we press enter, we will see a constant stream of traffic due to the fact that we our physical computer is constantly communicating with VM1 to make the connection possible. We can also notice that if we type anything or even move the mouse around it will show an influx of traffic. 
+Finally, we will observe RDP (Remote Desktop Protocol) by typing "RDP" or "tcp.port==3389" into our search bar. When we press enter, we will see a constant stream of traffic because our physical computer is constantly communicating with VM1 through Remote Desktop Protocol to make the connection possible. We can also notice that if we type anything or even move the mouse around it will show an influx of traffic. 
 </p>
 <br />
